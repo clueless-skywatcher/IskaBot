@@ -55,3 +55,12 @@ class KickCommand(ActionGIFCommand):
     @classmethod
     def parse_description(self, kicker, kicked):
         return f"{kicker} kicked {kicked}"
+
+class HugCommand(ActionGIFCommand):
+    name = "hug"
+    help_text = "Helps the author hug a mentioned member"
+    search_key = "anime hug"
+
+    @classmethod
+    def parse_description(self, hugger, hugged):
+        return f"{hugger} hugged {hugged}"
