@@ -66,7 +66,7 @@ class HugCommand(ActionGIFCommand):
         return f"{hugger} hugged {hugged}"
 
 class KissCommand(ActionGIFCommand):
-    name = "hug"
+    name = "kiss"
     help_text = "Helps the author kiss a mentioned member"
     search_key = "anime kiss"
 
