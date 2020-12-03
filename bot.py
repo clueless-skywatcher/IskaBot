@@ -3,6 +3,7 @@ from discord.ext import commands
 from decouple import config
 
 from iskabot.commands import *
+from iskabot.utils import *
 
 DISCORD_BOT_TOKEN = config("DISCORD_BOT_TOKEN")
 
@@ -34,7 +35,7 @@ class IskaBot(commands.Bot):
             cmd_actual = cmd_whole.split(" ")[0]
             cmd_params = cmd_whole.split(" ")[1:]
             cmd_found = False
-            for cmd in BaseCommand.__subclasses__():
+            for cmd in all_subclasses(BaseCommand):
                 if cmd.name == cmd_actual or cmd_actual in cmd.aliases:
                     cmd_found = True
                     await cmd.call(ctx, cmd_params)

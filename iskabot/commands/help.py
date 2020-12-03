@@ -1,4 +1,6 @@
 from iskabot.commands import *
+from iskabot.utils import *
+
 import discord
 
 class HelpCommand(BaseCommand):
@@ -18,16 +20,16 @@ class HelpCommand(BaseCommand):
 
     @classmethod
     async def run(self, ctx, params):
-        commands = BaseCommand.__subclasses__()
+        commands = all_subclasses(BaseCommand)
         if len(params) > 0:
             cmd_name = params[0]
             cmd_found = False
             for cmd in commands:
                 if cmd.name == cmd_name or cmd_name in cmd.aliases:
                     embed = discord.Embed(
-                        title="Help: " + ", ".join([cmd.name] + cmd.aliases),
-                        description=cmd.help_text,
-                        colour=discord.Colour.blue()
+                        title = "Help: " + ", ".join([cmd.name] + cmd.aliases),
+                        description = cmd.help_text,
+                        colour = discord.Colour.blue()
                     )
                     cmd_found = True
                     break
@@ -39,13 +41,14 @@ class HelpCommand(BaseCommand):
                 description="Here are all the help commands",
                 colour=discord.Colour.blue()
             )
+            commands.remove(ActionGIFCommand)
             for c in commands:
                 embed.add_field(
                     name = ",".join([c.name] + c.aliases),
                     value = c.help_text,
                     inline = False
                 )
-            embed.set_footer(text="Made with :love:")
+            embed.set_footer(text = "Made with love")
 
-        await ctx.send(embed = embed)
+        await ctx.channel.send(embed = embed)
 
