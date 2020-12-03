@@ -65,7 +65,7 @@ class HugCommand(ActionGIFCommand):
     def parse_description(self, hugger, hugged):
         return f"{hugger} hugged {hugged}"
 
-class HugCommand(ActionGIFCommand):
+class KissCommand(ActionGIFCommand):
     name = "hug"
     help_text = "Helps the author kiss a mentioned member"
     search_key = "anime kiss"
