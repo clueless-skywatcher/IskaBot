@@ -37,9 +37,12 @@ class HelpCommand(BaseCommand):
                 await ctx.channel.send("No help was found on this command.")
         else:
             embed = discord.Embed(
-                title="Commands documentation",
-                description="Here are all the help commands",
-                colour=discord.Colour.blue()
+                title = "Commands documentation",
+                description = '''
+                    Here are all the help commands. 
+                    Use __ (double underscore) before each command
+                ''',
+                colour = discord.Colour.blue()
             )
             commands.remove(ActionGIFCommand)
             for c in commands:
@@ -49,6 +52,5 @@ class HelpCommand(BaseCommand):
                     inline = False
                 )
             embed.set_footer(text = "Made with love")
-
         await ctx.channel.send(embed = embed)
 
