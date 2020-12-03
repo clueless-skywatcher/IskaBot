@@ -45,9 +45,10 @@ class HelpCommand(BaseCommand):
                 colour = discord.Colour.blue()
             )
             commands.remove(ActionGIFCommand)
+            commands = sorted(commands, key = lambda x : x.name)
             for c in commands:
                 embed.add_field(
-                    name = ",".join([c.name] + c.aliases),
+                    name = ", ".join([c.name] + c.aliases),
                     value = c.help_text,
                     inline = False
                 )
