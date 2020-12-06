@@ -24,7 +24,7 @@ class IskaBot(commands.Bot):
         self.message2 = "info: Bot online"
 
     async def on_ready(self):
-        await self.change_presence(activity = discord.Game(name ="__help"))
+        await self.change_presence(activity = discord.Game(name ="iska.help"))
         print(self.message1)
 
     async def on_message(self, message):
