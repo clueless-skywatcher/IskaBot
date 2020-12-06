@@ -10,7 +10,7 @@ DISCORD_BOT_TOKEN = config("DISCORD_BOT_TOKEN")
 class IskaBot(commands.Bot):
     def __init__(self):
         commands.Bot.__init__(self,
-                              command_prefix = '__',
+                              command_prefix = 'iska.',
                               self_bot = False,
                               intents = discord.Intents(
                 messages = True,

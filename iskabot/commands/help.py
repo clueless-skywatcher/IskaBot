@@ -9,11 +9,10 @@ class HelpCommand(BaseCommand):
     Produces a help text listing all bot commands. 
     If a command name is provided, it shows help for only that command
     '''
-    param_count = 1
 
     @classmethod
     async def call(self, ctx, params):
-        if len(params) > self.param_count:
+        if len(params) > 1:
             await ctx.channel.send(f"Wrong command syntax")
             return
         await self.run(ctx, params)
@@ -40,7 +39,7 @@ class HelpCommand(BaseCommand):
                 title = "Commands documentation",
                 description = '''
                     Here are all the help commands. 
-                    Use __ (double underscore) before each command
+                    Use iska. before each command
                 ''',
                 colour = discord.Colour.blue()
             )
